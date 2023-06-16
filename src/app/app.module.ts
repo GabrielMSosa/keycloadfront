@@ -1,18 +1,34 @@
-import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+ 
+import { AccessDeniedComponent } from './access-denied/access-denied.component';
+import { AdminComponent } from './admin/admin.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ManagerComponent } from './manager/manager.component';
+import { initializer } from 'src/utils/app-init';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AccessDeniedComponent,
+    ManagerComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    KeycloakAngularModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [  {
+    provide: APP_INITIALIZER,
+    useFactory: initializer,
+    deps: [KeycloakService],
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

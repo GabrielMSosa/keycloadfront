@@ -13,6 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+         
             "outputPath": "dist/keycload-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -60,18 +61,22 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "keycload-demo:build:production"
+              "browserTarget": "keycload-demo:build:production" 
             },
             "development": {
-              "browserTarget": "keycload-demo:build:development"
+              "browserTarget": "keycload-demo:build:development" 
+            
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "keycload-demo:build"
+            "browserTarget": "keycload-demo:build"  
+           
+            
           }
         },
         "test": {
@@ -94,5 +99,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "d7c59809-0b01-4dbc-a993-d1cefe9cb5b9"
   }
 }
